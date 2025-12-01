@@ -1,4 +1,5 @@
 from fastapi import FastAPI;
+from fastapi.middleware.cors import CORSMiddleware
 from .api import glossary;
 from .database import create_db_and_tables
 from contextlib import asynccontextmanager
@@ -13,6 +14,18 @@ app = FastAPI(
 	description='API-сервис глоссария терминов ВКР',
 	version='1.0.0',
 	lifespan=lifespan_event
+)
+
+origins = [
+      '*'
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(glossary.router)
