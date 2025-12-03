@@ -1,0 +1,58 @@
+.card {
+	position: relative;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	background-color: var(--night-surface);
+	transition: background 0.3s ease-in, color 0.3s ease-out;
+}
+
+.card:hover {
+	background-color: var(--night-contrast-bg);
+	color: var(--night-contrast-text);
+}
+
+.card:focus-within {
+	background-color: var(--night-contrast-bg);
+	color: var(--night-contrast-text);
+	outline: 2px solid var(--night-primary);
+}
+
+.link {
+	transition: color 0.3s ease;
+}
+
+.card:hover .link {
+	color: var(--night-accent-hover);
+}
+
+.term-container {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 0 1rem;
+	border-bottom: 1px solid var(--night-text-secondary);
+	border-image: linear-gradient(
+		to right,
+		var(--night-text-secondary),
+		transparent 50%
+	);
+	border-image-slice: 1;
+}
+
+.term {
+	text-align: left;
+	font-size: 1.5rem;
+}
+
+.term::first-letter {
+	text-transform: uppercase;
+}
+
+.link:focus {
+	outline: none;
+	color: var(--night-primary);
+}
+
+.definition {
+	text-align: left;
+}
