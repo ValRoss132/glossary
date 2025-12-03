@@ -1,36 +1,10 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 import { Card } from './components/Card'
-import type { IDefinition } from './types'
+import { MindMap } from './components/MindMap'
+import { useGlossary } from './hooks/useGlossary'
 
 function App() {
-	const [terms, setTerms] = useState<IDefinition[]>([])
-	const [isLoading, setIsLoading] = useState<boolean>(false)
-	const [error, setError] = useState<string | null>(null)
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				setIsLoading(true)
-				setError(null)
-
-				const response = await fetch('http://127.0.0.1:8000/terms/')
-
-				if (!response.ok) {
-					throw new Error('Ошибка сети')
-				}
-
-				const data = (await response.json()) as IDefinition[]
-
-				setTerms(data)
-			} catch {
-				setError('Ошибка загрузки данных')
-			} finally {
-				setIsLoading(false)
-			}
-		}
-		fetchData()
-	}, [])
+	const { terms, isLoading, error } = useGlossary()
 
 	return (
 		<main>
@@ -41,6 +15,7 @@ function App() {
 					<Card key={term.id} definition={term} />
 				))}
 			</section>
+			<MindMap />
 		</main>
 	)
 }
