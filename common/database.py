@@ -4,13 +4,19 @@ from fastapi import Depends
 from typing import Annotated
 from .model import GlossaryTerm
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(BASE_DIR, "data", "glossary.db")
+DATABASE_URL = os.environ.get(
+    "DATABASE_URL", 
+    "sqlite:///./data/glossary.db"
+)
 
-sqlite_url = f"sqlite:///{DB_PATH}"
+if DATABASE_URL.startswith("sqlite:///"):
+    file_path = DATABASE_URL.replace("sqlite:///", "")
+    DATABASE_URL = f"sqlite:///file:{file_path}?uri=true"
 
 connect_args = {"check_same_thread": False}
-engine = create_engine(sqlite_url, connect_args=connect_args)
+engine = create_engine(DATABASE_URL, connect_args=connect_args)
+
+print(f"DEBUG: Database URL used: {DATABASE_URL}")
 
 def create_db_and_tables():
 	print("Инициализация базы данных и создание таблиц...")

@@ -1,9 +1,9 @@
 import grpc
-from . import glossary_pb2
-from . import glossary_pb2_grpc
+import glossary_pb2
+import glossary_pb2_grpc
 
 def run():
-    channel = grpc.insecure_channel('localhost:50051')
+    channel = grpc.insecure_channel('localhost:6000')
     stub = glossary_pb2_grpc.GlossaryServiceStub(channel)
 
     # Пример: получить все термины
