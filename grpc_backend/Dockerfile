@@ -4,15 +4,16 @@ WORKDIR /usr/src/glossary
 
 ENV PYTHONPATH=/usr/src/glossary:$PYTHONPATH
 
-COPY rest_backend/requirements.txt .
+COPY grpc_backend/requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY rest_backend/app ./app
+COPY grpc_backend/app ./app
+COPY grpc_backend/proto ./proto
 
 COPY common ./common
 COPY data ./data
 
-EXPOSE 8000
+EXPOSE 6000
 
-CMD [ "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000" ]
+CMD ["python", "app/server.py"]

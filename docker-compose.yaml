@@ -1,0 +1,28 @@
+services:
+  rest:
+    build:
+      context: .
+      dockerfile: rest_backend/Dockerfile
+    container_name: glossary-rest-api
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./data:/usr/src/glossary/data
+    depends_on:
+      - grpc
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=sqlite:////usr/src/glossary/data/glossary.db
+
+  grpc:
+    build:
+      context: .
+      dockerfile: grpc_backend/Dockerfile
+    container_name: glossary-grpc-api
+    ports:
+      - '6000:6000'
+    volumes:
+      - ./data:/usr/src/glossary/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=sqlite:////usr/src/glossary/data/glossary.db
