@@ -1,7 +1,7 @@
 from fastapi import FastAPI;
 from fastapi.middleware.cors import CORSMiddleware
 from .api import glossary;
-from .database import create_db_and_tables
+from common.database import create_db_and_tables
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
