@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package app;
+
+service GlossaryService {
+  rpc GetTerms (GetTermsRequest) returns (GetTermsResponse);
+  rpc GetTermById (GetTermByIdRequest) returns (Term);
+}
+
+message GetTermsRequest {
+  int32 skip = 1;
+  int32 limit = 2;
+}
+
+message GetTermsResponse {
+  repeated Term terms = 1;
+}
+
+message GetTermByIdRequest {
+  int32 id = 1;
+}
+
+message Term {
+  int32 id = 1;
+  string term = 2;
+  string definition = 3;
+  string source = 4;
+}
+message TermResponse {
+  Term term = 1;
+}
