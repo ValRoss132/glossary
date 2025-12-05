@@ -111,6 +111,38 @@ docker-compose up --build -d
 python grpc_backend/app/client.py
 ```
 
+Либо можно использовать инструмент **grpcurl**, который позволяет вызывать RPC-методы без необходимости писать клиентский код.
+
+1. Проверка списка доступных сервисов
+
+Так как сервер работает **без TLS**, нужно использовать флаг `-plaintext`:
+
+```
+grpcurl -plaintext localhost:6000 list
+```
+
+2. Просмотр методов конкретного сервиса
+
+```
+grpcurl -plaintext localhost:6000 list app.GlossaryService
+```
+
+3. Вызов метода `GetTerms`
+
+```
+grpcurl -plaintext \
+  -d '{"skip":0, "limit":10}' \
+  localhost:6000 app.GlossaryService/GetTerms
+```
+
+4. Вызов метода GetTermById
+
+```
+grpcurl -plaintext \
+  -d '{"id": 1}' \
+  localhost:6000 app.GlossaryService/GetTermById
+```
+
 #### C. Проверка Frontend (Клиентское приложение)
 
 **Внимание:** На данный момент фронтенд-приложение **не контейнеризировано** и запускается локально для упрощения разработки.
