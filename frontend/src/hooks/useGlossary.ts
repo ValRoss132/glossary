@@ -6,13 +6,15 @@ export const useGlossary = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [error, setError] = useState<string | null>(null)
 
+	const API_URL = import.meta.env.API_URL
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				setIsLoading(true)
 				setError(null)
 
-				const response = await fetch('http://127.0.0.1:8000/terms')
+				const response = await fetch(`${API_URL}/terms`)
 
 				if (!response.ok) {
 					throw new Error('Ошибка сети')
@@ -28,7 +30,7 @@ export const useGlossary = () => {
 			}
 		}
 		fetchData()
-	}, [])
+	}, [API_URL])
 
 	return { terms, isLoading, error }
 }
