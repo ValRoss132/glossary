@@ -30,7 +30,7 @@ jobs:
         run: npm run build
         working-directory: frontend
         env:
-          API_URL: ${{ secrets.API_URL }}
+          VITE_API_URL: ${{ secrets.API_URL }}
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
