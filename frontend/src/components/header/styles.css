@@ -1,0 +1,11 @@
+.header-container {
+	padding: 2rem;
+	padding-right: 0;
+}
+
+.header-nav {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	justify-content: flex-end;
+}

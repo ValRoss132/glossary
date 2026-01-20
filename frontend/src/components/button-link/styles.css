@@ -1,0 +1,13 @@
+.button-link {
+	font-size: 20px;
+	padding: 0.5em 1.5em;
+	color: var(--night-surface);
+	background-color: var(--night-accent);
+	border-radius: 4px;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button-link:hover {
+	color: var(--night-text);
+	background-color: var(--night-accent-hover);
+}

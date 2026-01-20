@@ -1,0 +1,70 @@
+:root {
+	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	--night-bg: #0f1115;
+	--night-surface: #181b20;
+	--night-primary: #5b8cff;
+	--night-accent: #7ea5ff;
+	--night-accent-hover: #0040e3;
+	--night-text: #e5e7eb;
+	--night-text-secondary: #9ca3af;
+
+	--night-contrast-bg: #f4f4f5;
+	--night-contrast-text: #0f1115;
+
+	background-color: var(--night-bg);
+	color: var(--night-text);
+}
+
+body {
+	margin: 0;
+	display: flex;
+	place-items: center;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+h1 {
+	font-size: 3.2em;
+	line-height: 1.1;
+}
+
+dl,
+dt,
+dd {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: var(--night-accent);
+	text-decoration: none;
+}
+
+a:focus {
+	text-decoration: none;
+}
+
+button {
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6em 1.2em;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+	background-color: var(--night-surface);
+	cursor: pointer;
+}
+
+@media (max-width: 720px) {
+	:root {
+		font-size: 14px;
+	}
+}
