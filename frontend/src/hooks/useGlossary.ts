@@ -6,7 +6,9 @@ export const useGlossary = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [error, setError] = useState<string | null>(null)
 
-	const API_URL = import.meta.env.API_URL
+	const API_URL = import.meta.env.VITE_API_URL
+
+	console.log(API_URL)
 
 	useEffect(() => {
 		const fetchData = async () => {
