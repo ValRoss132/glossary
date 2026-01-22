@@ -10,7 +10,7 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path='/glossary' element={<GlossaryPage />} />
-				<Route path='/mind-map' element={<MindMapPage />} />
+				<Route path='/glossary/mind-map' element={<MindMapPage />} />
 				<Route path='*' element={<Navigate to='/glossary' replace />} />
 			</Routes>
 		</BrowserRouter>
