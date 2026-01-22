@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
 			<div className='header-container'>
 				<nav className='header-nav'>
 					<ButtonLink to='/glossary'>Glossary</ButtonLink>
-					<ButtonLink to='/mind-map'>Mind Map</ButtonLink>
+					<ButtonLink to='/glossary/mind-map'>Mind Map</ButtonLink>
 				</nav>
 			</div>
 		</header>
